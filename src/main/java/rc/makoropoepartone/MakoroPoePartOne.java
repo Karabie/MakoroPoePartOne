@@ -99,55 +99,64 @@ public class MakoroPoePartOne {
         } while (loginTriger);
     }
 
+    //method to create Tasks 
     static void createTask() {
 
+        //ask user Input
         int option = Integer.parseInt(JOptionPane.showInputDialog("Welcome to the Main Menu" + '\n'
                 + "Press 1 to add tasks" + '\n'
                 + "Press 2 to show report " + '\n'
                 + "Press 3 to Quit"));
 
-        while (option != 3) {
-
-            numtask = Integer.parseInt(JOptionPane.showInputDialog("Please enter number of tasks"));
-            task = new Task[numtask];
-            for (int c = 0; c < numtask; c++) {
-
-                boolean descriptionTrigger = false;
-                do {
-                    String taskName = JOptionPane.showInputDialog("Enter name of task");
-                    int taskNumber = c;
-                    String description = JOptionPane.showInputDialog("Enter Description of no more than 50 characters");
-                    String devDetails = JOptionPane.showInputDialog("Developer Name and Surname");
-                    int duration = Integer.parseInt(JOptionPane.showInputDialog("Input Duration"));
-                    int status = Integer.parseInt(JOptionPane.showInputDialog("Select from : 1 = To Do , 2 = Done , 3 = Doing"));
-
-                    task[c] = new Task();
-                    task[c].setTaskName(taskName);
-                    task[c].setTaskNumber(taskNumber);
-                    task[c].setDescription(description);
-                    task[c].setDevDetail(devDetails);
-                    task[c].setDuration(duration);
-                    if (status == 1) {
-                        task[c].setStatus("To Do");
-                    } else if (status == 2) {
-                        task[c].setStatus("Done");
-                    } else {
-                        task[c].setStatus("Doing");
-                    }
-                    if (task[c].checkTaskDecription()) {
-                        descriptionTrigger = true;
-                        JOptionPane.showMessageDialog(null, "Task succefully captured");
-                        task[c].createTaskID();
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Please enter a task description of less than 50 characters");
-                    }
-                } while (descriptionTrigger == false);
-
-            }
-            option = Integer.parseInt(JOptionPane.showInputDialog("Welcome to the Main Menu" + '\n'
+        while (option != 3) {//do while the quit option is not invoked
+            if (option == 2) {//Coming soon feature
+                JOptionPane.showMessageDialog(null, "Coming Soon");
+                option = Integer.parseInt(JOptionPane.showInputDialog("Welcome to the Main Menu" + '\n'
                 + "Press 1 to add tasks" + '\n'
                 + "Press 2 to show report " + '\n'
                 + "Press 3 to Quit"));
+            } else {//carry out to create tasks
+                numtask = Integer.parseInt(JOptionPane.showInputDialog("Please enter number of tasks"));
+                task = new Task[numtask];//resize the array
+                for (int c = 0; c < numtask; c++) {
+
+                    boolean descriptionTrigger = true;
+                    do {
+                        String taskName = JOptionPane.showInputDialog("Enter name of task");
+                        int taskNumber = c;
+                        String description = JOptionPane.showInputDialog("Enter Description of no more than 50 characters");
+                        String devDetails = JOptionPane.showInputDialog("Developer Name and Surname");
+                        int duration = Integer.parseInt(JOptionPane.showInputDialog("Input Duration"));
+                        int status = Integer.parseInt(JOptionPane.showInputDialog("Select from : 1 = To Do , 2 = Done , 3 = Doing"));
+
+                        task[c] = new Task();//create a task at the specified array index
+                        task[c].setTaskName(taskName);
+                        task[c].setTaskNumber(taskNumber);
+                        task[c].setDescription(description);
+                        task[c].setDevDetail(devDetails);
+                        task[c].setDuration(duration);
+                        if (status == 1) {
+                            task[c].setStatus("To Do");
+                        } else if (status == 2) {
+                            task[c].setStatus("Done");
+                        } else {
+                            task[c].setStatus("Doing");
+                        }
+                        if (task[c].checkTaskDecription()) {
+                            descriptionTrigger = false;
+                            JOptionPane.showMessageDialog(null, "Task succefully captured");
+                            task[c].createTaskID();
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Please enter a task description of less than 50 characters");
+                        }
+                    } while (descriptionTrigger);
+
+                }
+                option = Integer.parseInt(JOptionPane.showInputDialog("Welcome to the Main Menu" + '\n'
+                        + "Press 1 to add tasks" + '\n'
+                        + "Press 2 to show report " + '\n'
+                        + "Press 3 to Quit"));
+            }
 
         }
 

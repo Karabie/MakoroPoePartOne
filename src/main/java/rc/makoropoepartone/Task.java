@@ -53,13 +53,15 @@ public class Task {
         this.status = status;
     }
 
+    //check the characters if they meet the requirements
     public boolean checkTaskDecription() {
         if (this.description.length() <= 50) {
             return true;
         }
         return false;
     }
-
+    
+    //creation of task ID
     public String createTaskID() {
         String firsttwo = this.taskName.substring(0,2);      
         String lastThree = this.devDetail.substring(this.devDetail.length() - 3);
@@ -67,6 +69,7 @@ public class Task {
         return taskID;
     }
 
+    //Print out entire task details
     public String printTaskDetails() {
         return "Task Name: " + this.taskName + '\n'
                 + "Task Number: " + this.taskNumber + '\n'
@@ -77,6 +80,7 @@ public class Task {
                 + "Task Status: " + status;
     }
 
+    //return duration of task
     int returnTotalHours() {
         return this.duration;
     }
