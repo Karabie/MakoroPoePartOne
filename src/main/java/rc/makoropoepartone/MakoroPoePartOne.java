@@ -13,7 +13,7 @@ public class MakoroPoePartOne {
 
     //Create new object from the login class
     static Login user = new Login();
-    static Task [] task;
+    static Task[] task;
     static int numtask;
     //Declare variables for the main class
     static String full_name, last_name, username, password;
@@ -22,6 +22,8 @@ public class MakoroPoePartOne {
         //Call methods to create user and login user
         registerUser();
         loginUser();
+        createTask();
+        displayTasks();
     }
 
     static void createUser() {
@@ -96,57 +98,66 @@ public class MakoroPoePartOne {
             }
         } while (loginTriger);
     }
-    
-    static void createTask (){
-        
-        
-            int option = Integer.parseInt(JOptionPane.showInputDialog("Press 1 to add tasks" +"Press 2 to show report "+"Press 3 to Quit"));
-            
-            while(option != 3){
-                 numtask = Integer.parseInt(JOptionPane.showInputDialog("Please enter number of tasks"));
-                task = new Task[numtask];
-                for(int c = 0; c < numtask; c++){
-                    
-                    boolean descriptionTrigger = false;
-                    do{
+
+    static void createTask() {
+
+        int option = Integer.parseInt(JOptionPane.showInputDialog("Welcome to the Main Menu" + '\n'
+                + "Press 1 to add tasks" + '\n'
+                + "Press 2 to show report " + '\n'
+                + "Press 3 to Quit"));
+
+        while (option != 3) {
+
+            numtask = Integer.parseInt(JOptionPane.showInputDialog("Please enter number of tasks"));
+            task = new Task[numtask];
+            for (int c = 0; c < numtask; c++) {
+
+                boolean descriptionTrigger = false;
+                do {
                     String taskName = JOptionPane.showInputDialog("Enter name of task");
                     int taskNumber = c;
                     String description = JOptionPane.showInputDialog("Enter Description of no more than 50 characters");
                     String devDetails = JOptionPane.showInputDialog("Developer Name and Surname");
                     int duration = Integer.parseInt(JOptionPane.showInputDialog("Input Duration"));
                     int status = Integer.parseInt(JOptionPane.showInputDialog("Select from : 1 = To Do , 2 = Done , 3 = Doing"));
+
+                    task[c] = new Task();
                     task[c].setTaskName(taskName);
                     task[c].setTaskNumber(taskNumber);
                     task[c].setDescription(description);
                     task[c].setDevDetail(devDetails);
                     task[c].setDuration(duration);
-                    if(status == 1){
+                    if (status == 1) {
                         task[c].setStatus("To Do");
-                    }else if(status == 2){
+                    } else if (status == 2) {
                         task[c].setStatus("Done");
-                    }else{
+                    } else {
                         task[c].setStatus("Doing");
                     }
-                    if(task[c].checkTaskDecription()){
+                    if (task[c].checkTaskDecription()) {
                         descriptionTrigger = true;
                         JOptionPane.showMessageDialog(null, "Task succefully captured");
                         task[c].createTaskID();
-                    }else{
+                    } else {
                         JOptionPane.showMessageDialog(null, "Please enter a task description of less than 50 characters");
                     }
-                    }while(descriptionTrigger == false);
-                    
-                }
-                
+                } while (descriptionTrigger == false);
+
             }
-        
+            option = Integer.parseInt(JOptionPane.showInputDialog("Welcome to the Main Menu" + '\n'
+                + "Press 1 to add tasks" + '\n'
+                + "Press 2 to show report " + '\n'
+                + "Press 3 to Quit"));
+
+        }
+
     }
-    
-    static void displayTasks(){
-        for(int i = 0; i < numtask; i++){
+
+    static void displayTasks() {
+        for (int i = 0; i < numtask; i++) {
             JOptionPane.showMessageDialog(null, task[i].printTaskDetails());
         }
-        
+
     }
-    
+
 }
