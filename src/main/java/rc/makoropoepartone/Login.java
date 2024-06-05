@@ -68,11 +68,7 @@ public class Login {
     //Method to check username is valid
     public boolean checkUserName() {
 
-        if (this.username.contains("_") && this.username.length() <= 5) {
-            return true;
-        } else {
-            return false;
-        }
+        return this.username.contains("_") && this.username.length() <= 5;
 
     }
     //Method to check password for special characters using regex pattern and matcher and length
@@ -107,11 +103,7 @@ public class Login {
             }
         }
 
-        if (uppercase && lowercase && digit && special) {
-            return true;
-        } else {
-            return false;
-        }
+        return uppercase && lowercase && digit && special;
 
     }
     //Methof to Register user

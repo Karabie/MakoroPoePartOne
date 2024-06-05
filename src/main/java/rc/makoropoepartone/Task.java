@@ -52,13 +52,27 @@ public class Task {
     void setStatus(String status) {
         this.status = status;
     }
+    
+    //Getters
+    String getTaskName(){
+        return this.taskName;
+    }
+    int getTaskNumber(){
+        return this.taskNumber;
+    }
+    String getDevDetail(){
+        return this.devDetail;
+    }
+    int getDuration(){
+        return this.duration;
+    }
+    String getStatus(){
+        return this.status;
+    }
 
     //check the characters if they meet the requirements
     public boolean checkTaskDecription() {
-        if (this.description.length() <= 50) {
-            return true;
-        }
-        return false;
+        return this.description.length() <= 50;
     }
     
     //creation of task ID
