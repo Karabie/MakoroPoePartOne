@@ -189,7 +189,7 @@ public class MakoroPoePartOne {
         if (task!=null) {
             for (Task task1 : task) {
                 if (task1 != null) {
-                    // JOptionPane.showMessageDialog(null, task[i].printTaskDetails());
+                    
                     totalHours += task1.returnTotalHours();
                 }
             }
