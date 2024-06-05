@@ -189,7 +189,6 @@ public class MakoroPoePartOne {
         if (task!=null) {
             for (Task task1 : task) {
                 if (task1 != null) {
-                    // JOptionPane.showMessageDialog(null, task[i].printTaskDetails());
                     totalHours += task1.returnTotalHours();
                 }
             }
@@ -256,7 +255,6 @@ public class MakoroPoePartOne {
     //delete task method
     static void deleteTask(Task[] array, String taskName) {
         int index = 0;
-        int countValid = 0;
         Task[] tmparray = array;
         if (tmparray!=null) {
             for (int i = 0; i < tmparray.length; i++) {
@@ -264,8 +262,6 @@ public class MakoroPoePartOne {
                     if (tmparray[i].getTaskName().equalsIgnoreCase(taskName)) {
                         index += tmparray[i].getTaskNumber();
                         tmparray[i] = null;
-                    }else{
-                        countValid ++;
                     }
                 }
 
