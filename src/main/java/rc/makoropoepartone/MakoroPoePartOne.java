@@ -108,7 +108,7 @@ public class MakoroPoePartOne {
 
         while (option != 7) { //do while the quit option is not invoked
             switch (option) {
-                case 2 -> //Coming soon feature
+                case 2 -> 
                     showReport(); // Display The Complete Report
                 case 1 -> {
                     //carry out to create tasks
@@ -234,7 +234,7 @@ public class MakoroPoePartOne {
             return ERRORTASK;
         }
     }
-    //
+    //Search Task Method
     static String searchTask(String taskName) {
         String details = "";
         if (task!=null) {
